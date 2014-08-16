@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		html{height:1000px;} 
+	</style>
+</head>
+<body>
+<!-- window.pageYOffset -->
+<script type="text/javascript">
+	(function(){
+		window.scrollBy(0,100);//文档向右滚动0，向下滚动100(首先得设置文档的高度，当滚动的高度超出文档的高度，则window.pageYOffset返回-1)
+		alert(window.pageYOffset);
+		//当滚动条到达页面最底部时，window.pageYOffset=1000-document.documentElement.clientHeight;
+	})();
+
+</script>
+</body>
+</html>
