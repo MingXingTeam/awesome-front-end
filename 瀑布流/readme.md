@@ -1,2 +1,1 @@
-### 函数
-Modernizr.prefixed 检测前缀
+### 瀑布流功能
