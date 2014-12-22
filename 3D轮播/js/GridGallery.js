@@ -5,6 +5,22 @@
  */
 ;(function  (window) {
 	'use strict';
+
+	//对于显示前后的图很重要
+	var docElem = window.document.documentElement,
+		transEndEventNames = {
+			'WebkitTransition': 'webkitTransitionEnd',
+			'MozTransition': 'transitionend',
+			'OTransition': 'oTransitionEnd',
+			'msTransition': 'MSTransitionEnd',
+			'transition': 'transitionend'
+		},
+		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+		support = {
+			transitions : Modernizr.csstransitions,
+			support3d : Modernizr.csstransforms3d
+		};
+
 	/**
 	 * [GridGallery 构造函数]
 	 * @param {[type]} el      [CSS选择器]
@@ -92,16 +108,17 @@
 		classie.addClass( this.currentItem, 'current' );
 		classie.addClass( this.currentItem, 'show' );
 
-		// if( this.prevItem ) {
-		// 	classie.addClass( this.prevItem, 'show' );
-		// 	var translateVal = Number( -1 * ( getViewportW() / 2 + this.prevItem.offsetWidth / 2 ) );
-		// 	// setTransform( this.prevItem, support.support3d ? 'translate3d(' + translateVal + 'px, 0, -150px)' : 'translate(' + translateVal + 'px)' );
-		// }
-		// if( this.nextItem ) {
-		// 	classie.addClass( this.nextItem, 'show' );
-		// 	var translateVal = Number( getViewportW() / 2 + this.nextItem.offsetWidth / 2 );
-		// 	// setTransform( this.nextItem, support.support3d ? 'translate3d(' + translateVal + 'px, 0, -150px)' : 'translate(' + translateVal + 'px)' );
-		// }
+		//显示图片前后的图标
+		if( this.prevItem ) {
+			classie.addClass( this.prevItem, 'show' );
+			var translateVal = Number( -1 * ( getViewportW() / 2 + this.prevItem.offsetWidth / 2 ) );
+			setTransform( this.prevItem, support.support3d ? 'translate3d(' + translateVal + 'px, 0, -150px)' : 'translate(' + translateVal + 'px)' );
+		}
+		if( this.nextItem ) {
+			classie.addClass( this.nextItem, 'show' );
+			var translateVal = Number( getViewportW() / 2 + this.nextItem.offsetWidth / 2 );
+			setTransform( this.nextItem, support.support3d ? 'translate3d(' + translateVal + 'px, 0, -150px)' : 'translate(' + translateVal + 'px)' );
+		}
 
 	};
 	/**
@@ -125,6 +142,7 @@
 		el.style.msTransform = transformStr;
 		el.style.transform = transformStr;
 	}
+	//对于显示前后的图很重要
 	function getViewportW() {
 		var client = docElem['clientWidth'],
 			inner = window['innerWidth'];
