@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<!-- 火狐：
+	target.addEventListener(type,listener,useCapture);
+	type:事件名称
+	listener:函数 
+	userCapture:true表示从文档头到尾 false表示先寻找指定位置
+	-->
+	<button id="btn1">按钮1</button>
+	<script type="text/javascript">
+	var btn1 = document.getElementById("btn1");
+	// //最原始的绑定事件
+	// btn1.onclick = function(){alert("最原始的");};//多次绑定 只会执行最后一个函数。
+	// btn1.addEventListener('click',function(){alert("执行监听方法1");},false);
+	// btn1.addEventListener('click',function(){alert("执行监听方法2");},false);
+	// btn1.addEventListener('click',function(){alert("执行监听方法3");},false);
+	//如果添加了多个监听，则按照添加的顺序依次执行。
+
+	// IE：采用attachEvent
+	// 不用第三个参数：都是从制定位置寻找
+	btn1.attachEvent("onclick",function(){alert("IE绑定1");});
+	btn1.attachEvent("onclick",function(){alert("IE绑定2");});
+
+	//移除事件
+	//btn1.detachEvent("onclick")
+	</script>
+</body>
+</html>

@@ -2,32 +2,54 @@
 <html>
 <head>
 	<title></title>
-</head>
-<body>
-
-	<!-- 火狐：
-	target.addEventListener(type,listener,useCapture);
-	type:事件名称
-	listener:函数 
-	userCapture:true表示从文档头到尾 false表示先寻找指定位置
-	-->
-	<button id="btn1">按钮1</button>
 	<script type="text/javascript">
-	var btn1 = document.getElementById("btn1");
-	// //最原始的绑定事件
-	// btn1.onclick = function(){alert("最原始的");};//多次绑定 只会执行最后一个函数。
-	// btn1.addEventListener('click',function(){alert("执行监听方法1");},false);
-	// btn1.addEventListener('click',function(){alert("执行监听方法2");},false);
-	// btn1.addEventListener('click',function(){alert("执行监听方法3");},false);
-	//如果添加了多个监听，则按照添加的顺序依次执行。
+		var a = function optCss(val) {
+	        var padding, margin, border;
+	        val = val.replace(/(padding|margin|border)\-([^:]+):([^;]+);?/gi, function (str, key, name, val) {
+	            if (val.split(' ').length == 1) {
+	                switch (key) {
+	                    case 'padding':
+	                        !padding && (padding = {});
+	                        padding[name] = val;
+	                        return '';
+	                    case 'margin':
+	                        !margin && (margin = {});
+	                        margin[name] = val;
+	                        return '';
+	                    case 'border':
+	                        return val == 'initial' ? '' : str;
+	                }
+	            }
+	            return str;
+	        });
 
-	// IE：采用attachEvent
-	// 不用第三个参数：都是从制定位置寻找
-	btn1.attachEvent("onclick",function(){alert("IE绑定1");});
-	btn1.attachEvent("onclick",function(){alert("IE绑定2");});
+	        function opt(obj, name) {
+	            if (!obj) {
+	                return '';
+	            }
+	            var t = obj.top , b = obj.bottom, l = obj.left, r = obj.right, val = '';
+	            if (!t || !l || !b || !r) {
+	                for (var p in obj) {
+	                    val += ';' + name + '-' + p + ':' + obj[p] + ';';
+	                }
+	            } else {
+	                val += ';' + name + ':' +
+	                    (t == b && b == l && l == r ? t :
+	                        t == b && l == r ? (t + ' ' + l) :
+	                            l == r ? (t + ' ' + l + ' ' + b) : (t + ' ' + r + ' ' + b + ' ' + l)) + ';'
+	            }
+	            return val;
+	        }
 
-	//移除事件
-	//btn1.detachEvent("onclick")
+	        val += opt(padding, 'padding') + opt(margin, 'margin');
+	        return val.replace(/^[ \n\r\t;]*|[ \n\r\t]*$/, '').replace(/;([ \n\r\t]+)|\1;/g, ';')
+	            .replace(/(&((l|g)t|quot|#39))?;{2,}/g, function (a, b) {
+	                return b ? b + ";;" : ';'
+	            });
+	    }
 	</script>
+</head>
+<body onload=optCss('padding:2px');>
+
 </body>
 </html>
