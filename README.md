@@ -1,6 +1,1 @@
-JSLab
-=====
-
-JS练习实验室
-
-有针对地练习JS的相关语法
+javascript demos
