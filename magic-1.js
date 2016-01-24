@@ -112,10 +112,17 @@ var a = 12;
 var b = new Function("alert(a)");
 console.info(b());
 
+//case
+var a = [12,2,3,4,5];
+a.splice(2, 1);//3
+console.info(a);//[12,2,4,5]
 
-
-
-
+//case
+var a = [12,3];
+a.unshift(4);
+console.info(a);//[4,12,3]
+a.shift(4);
+console.info(a);//[12,3]
 
 
 
