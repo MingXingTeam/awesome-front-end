@@ -1,0 +1,2 @@
+npm install express --save   //package.json 中会添加依赖
+

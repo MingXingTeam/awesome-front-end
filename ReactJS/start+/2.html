@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/csv" id="pokedex">
+url,title,size
+images/address-book.png?1354486198, Address Book, 1904 KB
+images/front-row.png?1354486198, Front Row, 401 KB
+images/google-pokemon.png?1354486198, Google Pokémon, 12875 KB
+images/ical.png?1354486198, iCal, 5273 KB
+images/ichat.png?1354486198, iChat, 5437 KB
+images/interface-builder.png?1354486198, Interface Builder, 2764 KB
+images/ituna.png?1354486198, iTuna, 17612 KB
+images/textedit.png?1354486198, TextEdit, 346 KB
+</script>
+<script  type="text/jsx">
+
+    var pokedex = getPokedex();
+
+    var Pokedex = React.createClass({
+        render:function(){
+            return <span>{this.props.data.length}</span>
+        }
+    })
+
+    ReactDOM.render(<Pokedex data={pokedex} />,document.getElementById("app"))
+
+    function getPokedex() {
+        return document.getElementById("pokedex").innerHTML.trim().split("\n").map(function (line) {
+                    var parts = line.split(",");
+                    return {
+                        id: parts[0] | 0,
+                        name: parts[1]
+                    }
+                });
+    }
+</script>
+</body>
+</html>

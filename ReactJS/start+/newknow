@@ -1,0 +1,11 @@
+/**
+@param pokedex JSON对象
+@param null 如果是函数可以再对遍历的json进行处理
+@param 4 缩进的位数
+**/
+JSON.stringify(pokedex, null, 4)}
+
+//返回一个新数组
+array.map(function(item){
+    //item是数组的一个值
+})
