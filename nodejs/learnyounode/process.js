@@ -4,9 +4,9 @@
 // }
 // console.log(count)
 
-var result = 0;
-for(var i = 2; i < process.argv.length; i++) {
-	result += +process.argv[i];// 加号
-}
+// var result = 0;
+// for(var i = 2; i < process.argv.length; i++) {
+// 	result += +process.argv[i];// 加号
+// }
 
-console.log(result)
+console.log(require.resolve('strftime'))
