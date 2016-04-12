@@ -1,0 +1,11 @@
+CACHE MANIFEST
+
+version 1.0
+CACHE:
+    test.js
+    test.css
+NETWORK:
+    *
+# offline.html will be displayed if the user is offline
+FALLBACK:
+/ /offline.html

@@ -1,0 +1,163 @@
+<html>
+<head>
+    <title>打分练习</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<?php
+ $n=8;
+ $judge=array();
+ for($i=0;$i<$n;$i++)//接收数据
+ {   $j=$i+1;
+	 $judge[$i]=$_REQUEST['s'.$j];
+ }
+   $high=$judge[0]; 
+   $highjudge=1;
+    $low=$judge[0];
+	$lowjudge=1;
+for($i=0;$i<$n-1;$i++)//寻找最大值和最小值
+{  
+	if($high<$judge[$i+1])
+		{
+		$high=$judge[$i+1];
+		$highjudge=$i+2;
+		}
+	if($low>$judge[$i+1])
+		{
+		$low=$judge[$i+1];
+		$lowjudge=$i+2;
+		}
+	
+}
+$avg=(array_sum($judge)-$high-$low)/(count($judge)-2);//计算平均值
+$judge1=$judge;
+unset($judge[$highjudge-1]);
+unset($judge[$lowjudge-1]);
+foreach($judge as $key1=>$val1) //给最佳最差评委赋初值
+{
+  if($key1!=$highjudge-1&&$key1!=$lowjudge-1)
+	{
+       $badjudge=$bestjudge=abs($val1-$avg);
+	   $bestnum=$badnum=$key1+1;
+	   break;
+	}
+}
+
+foreach($judge as $key=>$val) //找出最好最差评委
+{
+   $sub=abs($val-$avg);
+   if($sub>$badjudge)
+	{
+	   $badjudge=$sub;
+	   $badnum=$key+1;
+	}
+	if($sub<$bestjudge)
+	{
+		$bestjudge=$sub;
+		$bestnum=$key+1;
+	}
+
+}
+?>
+<body>
+    <form action="dafen2.php" method="post">
+        <table>
+            <tr>
+                <td>第一个分数</td>
+                <td>
+                    <input type="text" name="s1" value="<?php echo $judge1[0];?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>第二个分数</td>
+                <td>
+                    <input type="text" name="s2" value="<?php echo $judge1[1];?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>第三个分数</td>
+                <td>
+                    <input type="text" name="s3" value="<?php echo $judge1[2];?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>第四个分数</td>
+                <td>
+                    <input type="text" name="s4" value="<?php echo $judge1[3];?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>第五个分数</td>
+                <td>
+                    <input type="text" name="s5" value="<?php echo $judge1[4];?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>第六个分数</td>
+                <td>
+                    <input type="text" name="s6" value="<?php echo $judge1[5];?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>第七个分数</td>
+                <td>
+                    <input type="text" name="s7" value="<?php echo $judge1[6];?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>第八个分数</td>
+                <td>
+                    <input type="text" name="s8" value="<?php echo $judge1[7];?>" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">平均分为</td>
+                <td>
+                    <input type="text" name="avg" value="<?php echo $avg;?>" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">最高分评委</td>
+                <td>
+                    <input type="text" name="high" value="<?php echo $highjudge?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>最低分评委</td>
+                <td>
+                    <input type="text" name="low" value="<?php echo $lowjudge;?>" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">最佳评委</td>
+                <td>
+                    <input type="text" name="high" value="<?php echo $bestnum;?>" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">分值差为</td>
+                <td>
+                    <input type="text" name="high" value="<?php echo $bestjudge;?>" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">最差评委</td>
+                <td>
+                    <input type="text" name="high" value="<?php echo $badnum;?>" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">分值差为</td>
+                <td>
+                    <input type="text" name="high" value="<?php echo $badjudge;?>" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="提交" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

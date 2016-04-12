@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    /* 关闭按钮 */
+		input[type=number]::-webkit-inner-spin-button, 
+		input[type=number]::-webkit-outer-spin-button { 
+		  -webkit-appearance: none; 
+		  margin: 0; 
+		}
+	</style>		
+</head>
+<body>
+	<!-- 默认情况下 这个是有上下按钮的 -->
+	<input type="number">
+	<input type="date" id="mydate">
+	<script>
+		document.getElementById('mydate').addEventListener("change", function() {
+			console.log(document.getElementById('mydate').value);
+		})
+		
+	</script>
+</body>
+</html>

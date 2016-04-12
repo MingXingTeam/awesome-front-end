@@ -1,0 +1,2 @@
+saveAsImage
+toDataUrl
