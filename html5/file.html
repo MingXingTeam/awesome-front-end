@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="file" id="input">
+	<script>
+		var selected_file = document.getElementById('input').files[0];
+		document.getElementById('input').addEventListener("change", function(e){
+			console.log(this);
+			console.log(this.files);
+		}, false);
+	</script>
+</body>
+</html>
