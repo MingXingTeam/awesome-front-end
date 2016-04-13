@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			transition: all 1s ease;
+		}
+		div {
+			background-color: red;
+		}
+	
+		div ul {
+			background-color: blue;
+		}
+		/*相邻选择器 只会将span上色*/
+		p + span {
+			background: yellow;
+		}
+
+		p > strong {
+			color: red;
+		}
+
+		p[name=maomao] {
+			background-color: green;
+		}
+
+		#fake:before {
+			background-color: black;
+			content: 'nima';
+			color: #ffffff;
+		}
+		
+		/*可以定位*/
+		#fake:after {
+			background: orange;
+			display: block;
+			width: 200px;
+			height: 200px;
+			content: 'hhhh';
+		}
+
+		
+
+	</style>
+</head>
+<body>
+	<div>
+		你好
+		<ul>
+			<li>AA</li>
+		</ul>
+	</div>
+
+	<p id="box1">box1
+	<strong>red text</strong>
+	</p>
+	<span id="box2">box2</span>
+
+    <p name="maomao">green text</p>
+
+	<div id="fake">FFFFFF</div>
+
+</body>
+</html>

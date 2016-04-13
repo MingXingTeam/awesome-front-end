@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.circle {
+			border-radius: 100px;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="circle" class="circle"></div>
+	<script>
+		var circle = document.getElementById("circle");
+		circle.addEventListener('click', function(e) {
+			console.log(e.x);
+			console.log(e.y);
+			//计算点击范围是否在圆上
+		})
+	</script>
+</body>
+</html>
