@@ -11,9 +11,7 @@ var phoneScale = parseInt(window.screen.width) / 640;
 <meta name="viewport" content="width=640, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">
 640为页面设计的尺寸
 缺点：如果界面设计的尺寸很小，在大屏手机上放大会模糊，不过实际上设计不会那么小 一般不会有什么问题。
- 
- 
- 
+
 3、rem：通过根元素进行适配。界面里的所有内容都按照rem设置大小，根据不同的宽高设置根元素的值。
 以上几种方式的共同缺点： 比较死板，比如设计的时候一行放4个按钮，如果放在屏幕很小的时候上可能太小不好操作，如果放在很大的手机上又显得太大。
  
@@ -22,3 +20,6 @@ var phoneScale = parseInt(window.screen.width) / 640;
  
 设置禁止浏览器放大缩小
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport" />
+
+// 无缝适配：针对所有屏幕宽度
+一般viewport设为设备宽度，然后看页面情况，媒体查询肯定要，自适应布局看是否需要无缝适配
