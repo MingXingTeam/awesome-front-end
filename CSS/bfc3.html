@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--
+	 中间不能有border或者padding
+	 如果一个元素的 height 特性的值不是 auto，那么它的 margin-bottom 和它子元素的 margin-bottom 不会折叠  -->
+	<div style="border:1px solid red; width:100px;">
+	    <div style="margin:50px 0; background-color:green; height:50px; width:50px;">
+	       <div style="margin:20px 0;">
+	           <div style="margin:100px 0;">B</div>
+	       </div>
+	    </div>
+	</div>
+</body>
+</html>

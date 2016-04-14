@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="tg">asdfasf</div>
+	<script>
+		function addEvent(elem, eventName, callback) {
+			if(elem.addEventListener) {
+				elem.addEventListener(eventName, callback, false);
+			} else if(elem.attachEvent) {
+				elem.attachEvent(eventName, callback);
+			}
+		}
+		addEvent(document.getElementById("tg"), "click",function(e){
+			console.log(e.x+"----------"+e.y)
+			console.log(e.pageX+"------------"+e.pageY);
+		})		
+	</script>
+  
+</body>
+</html>

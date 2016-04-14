@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    /* 没有定位 会忽略z-index声明  */
+		.parent {
+			background:red;
+			position: absolute;
+			z-index: 10;
+		}
+		.son {
+			position: absolute;
+			z-index: 1;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="parent">
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="son">
+			asdfasdf
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    /* 无效：chrome某些版本有效；只对英文有效 */
+		html{-webkit-text-size-adjust:none;}
+		#taget {
+			font-size: 12px;
+		}
+		.less {
+			width: 200px;
+			height: 200px;
+			border: 2px solid red;
+			/* 元素缩放并不会影响它所占据的区域大小 */
+			transform: scale(0.875);
+			font-size: 4px;
+		}
+		.cm{
+			width: 200px;
+			height: 200px;
+			border: 2px solid blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="taget">
+		AAAA
+	</div>
+	<div class="less">
+		AAAA
+	</div>
+	<div class="cm">
+		BBB
+	</div>
+</body>
+</html>
