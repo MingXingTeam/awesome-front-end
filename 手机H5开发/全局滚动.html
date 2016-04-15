@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;">
+	<title>Document</title>
+	<link rel="stylesheet" href="../respond.css">
+	<!--
+	   IOS 全局滚动: 默认支持
+	       局部滚动: 默认没有滚动条且滑动起来干涩
+
+	   
+    -->
+	<style>
+		body {
+			overflow-y: scroll;
+		}
+		.active {
+			color: yellow;
+			font-size: 4rem;
+		}
+	</style>
+	<script src="zepto.js"></script>
+</head>
+<body>
+	<ul>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>A</li>
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+	</ul>
+	<script>
+		// 用:active伪类实现会在滚动的时候也触发样式
+		
+		$("#btn").on('tap', function(e) {
+			var $target = $(e.target);
+			$target.addClass('active');
+
+			setTimeout(function() {
+				$target.removeClass('active');
+			}, 430)
+		})
+	</script>
+</body>
+</html>

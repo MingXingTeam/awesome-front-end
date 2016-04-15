@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;"  />
+	<title>Document</title>
+	<link rel="stylesheet" href="../respond.css">
+	<style>
+		.active {
+			color: yellow;
+			font-size: 4rem;
+		}
+	</style>
+	<script src="zepto.js"></script>
+</head>
+<body>
+	<div id="btn">click me</div> 
+	<script>
+		// 用:active伪类实现会在滚动的时候也触发样式
+
+		$("#btn").on('tap', function(e) {
+			var $target = $(e.target);
+			$target.addClass('active');
+
+			setTimeout(function() {
+				$target.removeClass('active');
+			}, 430)
+		})
+	</script>
+</body>
+</html>
