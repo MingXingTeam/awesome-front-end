@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		/* #block {
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			left:10px;
+			top:70px;
+		} */
+		#stop {
+			color: red;
+			width: 200px;
+		}
+	</style>
+	<script src="animate.js"></script>
+</head>
+<body>
+	<button id="start">开始</button>
+	<button id="stop">停止</button>
+	<div id="block" style="width:100px;height:100px;background:red;"></div>
+	<script>
+		var start = document.getElementById('start');
+		var stop = document.getElementById('stop');
+
+		var block = document.getElementById('block');
+		start.addEventListener("click", function() {
+			animation(block, {
+				"width": "800px" 
+			}, 2000, function() {
+				console.log("动画结束")
+			})
+		}, false);
+		stop.addEventListener("click", function() {
+			 cancelAnimationFrame(requestID);
+		}, false);
+	</script>
+</body>
+</html>
