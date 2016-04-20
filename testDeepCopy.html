@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="deepcopy.js"></script>
+	<script>
+	  var srcObj = {
+	    'name': '毛毛',
+	    'sex': '男',
+	    'aaa': [1,2,3,4],
+	    'children': {
+	      'name':'小毛头',
+	      'age': '12'
+	    }
+	  }
+	  var destObj = {};
+	  copy(destObj,srcObj)
+	  console.log(destObj);
+	  srcObj.children.name = "xxxx";
+	  console.dir(destObj);
+	  console.dir(srcObj);
+	</script>
+</body>
+</html>
