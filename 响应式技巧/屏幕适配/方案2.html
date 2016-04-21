@@ -57,3 +57,25 @@
 	</script>
 </body>
 </html>
+
+<!-- 
+解决比较短的屏幕显示不完全的情况呢，可以先判断一下视口的比例，当视口高宽比低于设计稿宽高比时，缩小html节点的font-size这样就能把内容显示全了
+
+var root = document.getElementsByTagName('html')[0],
+    NATIVE_W = 640,
+    NATIVE_H = 960;
+
+function htmlSize() {
+    var cw = 50,
+        w = window.innerWidth,
+        h = window.innerHeight;  
+    if ((w / h) > (NATIVE_W / NATIVE_H)) {
+        cw = h / (NATIVE_H / 100);
+    } else {
+        cw = w / (NATIVE_W / 100);
+    }
+    root.style.fontSize = cw + 'px';
+}
+window.onload = htmlSize;
+window.onresize = htmlSize;
+ -->
