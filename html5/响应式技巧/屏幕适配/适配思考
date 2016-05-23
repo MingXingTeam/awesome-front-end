@@ -1,0 +1,25 @@
+图片：max-width max-height 固定 background-size
+水平布局： 使用百分比或者flex 负数magin 
+
+先用媒体查询检测设备宽度，设置一个rem字体大小，再用sass将设计图的实际像素换算成对应的rem就可以了
+
+1、流式布局：很多app都是采用此方式，设定固定高度，宽度采用百分比。 
+缺点：在有的手机上图片按百分比放大后会模糊。
+ 
+2：viewport：通过设置viewport进行放大缩小。这方法简单，粗暴，高效。个人感觉还是挺实用的，不管是固定宽高还是什么都能用。
+var phoneScale = parseInt(window.screen.width) / 640;
+<meta name="viewport" content="width=640, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">
+640为页面设计的尺寸
+缺点：如果界面设计的尺寸很小，在大屏手机上放大会模糊，不过实际上设计不会那么小 一般不会有什么问题。
+
+3、rem：通过根元素进行适配。界面里的所有内容都按照rem设置大小，根据不同的宽高设置根元素的值。
+以上几种方式的共同缺点： 比较死板，比如设计的时候一行放4个按钮，如果放在屏幕很小的时候上可能太小不好操作，如果放在很大的手机上又显得太大。
+ 
+4、响应式布局：核心也是通过媒体查询来判断不同的手机尺寸做不同的样式处理，比较灵活能做到不管什么手机都有非常好的视觉效果。jquery mobile，bootstrap等都是此布局
+缺点：工作量大，难得大
+ 
+设置禁止浏览器放大缩小
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" name="viewport" />
+
+// 无缝适配：针对所有屏幕宽度
+一般viewport设为设备宽度，然后看页面情况，媒体查询肯定要，自适应布局看是否需要无缝适配

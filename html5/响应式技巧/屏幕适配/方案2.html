@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <meta name="viewport" content="width=640"> -->
+	<style>
+		html{
+			/* 10 */
+			/* font-size:62.5%;	 */
+		}
+		.container{
+			width: 32rem;
+			font-size: 1.8rem;
+		}
+		
+		/* <=320 */
+		
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		AAAA
+	</div>
+
+	<script>
+		document.documentElement.style.fontSize = getFontSize(320, 10) + "px";
+	    window.onresize = function () {
+	        document.documentElement.style.fontSize = getFontSize(320, 10) + "px";
+	    }
+		function getFontSize(defaultWidth, defaultSize) {
+			// alert(window.innerWidth)
+		    var b = this.getBrowserInfo();
+		    if (b.ios || b.iPhone || b.iPad) {
+		        return Math.round(window.innerWidth / defaultWidth * defaultSize);
+		    } else {
+		        return Math.round(window.screen.width / defaultWidth * defaultSize);
+		    }
+		}
+
+		function getBrowserInfo() {
+		    var u = navigator.userAgent, app = navigator.appVersion;
+		    return {//移动终端浏览器版本信息
+		        trident: u.indexOf('Trident') > -1, //IE内核
+		        presto: u.indexOf('Presto') > -1, //opera内核
+		        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+		        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+		        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+		        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+		        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+		        iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+		        iPad: u.indexOf('iPad') > -1, //是否iPad
+		        webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+		    };
+		}
+	</script>
+</body>
+</html>
+
+<!-- 
+解决比较短的屏幕显示不完全的情况呢，可以先判断一下视口的比例，当视口高宽比低于设计稿宽高比时，缩小html节点的font-size这样就能把内容显示全了
+
+var root = document.getElementsByTagName('html')[0],
+    NATIVE_W = 640,
+    NATIVE_H = 960;
+
+function htmlSize() {
+    var cw = 50,
+        w = window.innerWidth,
+        h = window.innerHeight;  
+    if ((w / h) > (NATIVE_W / NATIVE_H)) {
+        cw = h / (NATIVE_H / 100);
+    } else {
+        cw = w / (NATIVE_W / 100);
+    }
+    root.style.fontSize = cw + 'px';
+}
+window.onload = htmlSize;
+window.onresize = htmlSize;
+ -->

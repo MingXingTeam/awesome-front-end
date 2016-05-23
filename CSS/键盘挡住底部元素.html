@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.2.1.3.js"></script>
+	<style>
+		body {
+			font-size: 12rem;
+			height: 100%;
+		}
+		.container {
+		}
+
+		.p-fixed {
+			position: fixed;
+			bottom:0;
+			width: 100%;
+			background-color: yellow;
+		}
+
+		input {
+			padding: 1rem;
+			width: 80%;
+			height: 10rem;	
+			font-size: 6rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		我是主体
+		<input type="text">
+	</div>
+	<div class="footer p-fixed" id="footer">
+		我是底部
+	</div>
+	<script type="text/javascript">
+		window.addEventListener("orientationchange", function() {
+		    // rewrite CSS when the user rotates the device                
+		    setFooterVisibility();
+		}, false);
+
+		$(document).ready(function(){
+		    // write CSS for the first time when the browser is ready
+		    setFooterVisibility();
+		});
+
+	function setFooterVisibility(){
+	    var win     = $(window),
+	        height  = win.height(),
+	        width   = win.width();
+	    $('#styles').html("<style>#footer{visibility: hidden;}@media screen and (orientation: portrait) and (min-height: " + (Math.max(width, height) - 10) + "px){ #footer { visibility: visible; } }@media screen and (orientation: landscape) and (min-height: " + (Math.min(width, height) - 30) + "px){ #footer { visibility: visible; } }</style>");
+	}
+	</script>
+
+	<!-- put this line anywhere in the body -->
+	<div id='styles'></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/* This parent can be any width and height */
+		.block {
+		  text-align: center;
+
+		  /* May want to do this if there is risk the container may be narrower than the element inside */
+		  white-space: nowrap;
+		}
+		 
+		/* The ghost, nudged to maintain perfect centering */
+		.block:before {
+		  content: '';
+		  display: inline-block;
+		  height: 100%;
+		  vertical-align: middle;
+		  margin-right: -0.25em; /* Adjusts for spacing */
+		}
+
+		/* The element to be centered, can also be of any width and height */ 
+		.centered {
+		  display: inline-block;
+		  vertical-align: middle;
+		  width: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="block">
+		<div class="centered">
+			
+		</div>
+	</div>
+</body>
+</html>

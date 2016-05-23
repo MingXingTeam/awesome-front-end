@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <!-- 页面编码 -->
+	<meta charset="UTF-8">
+    <!-- 禁止地址和手机号码检测 -->
+    <meta name="format-detection" content="telephone=no, address=no">
+    <!-- 删除默认的苹果工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes"/>
+    
+    <!-- 视口为设备大小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script src="jquery.2.1.3.js"></script>
+	<script src="slideout.min.js"></script>
+	<script src="iscroll.js"></script>
+	<style>
+		html {
+			height: 100%;
+			font-size: 150%;
+		}
+		body {
+			height: 100%;
+		}
+		#panel {
+			height: 100%;
+		}
+		.header {
+		    position: fixed;
+		    top:0;
+		    left:0;
+		    z-index: 9999;
+		    height: 4.4rem;
+		    width: 100%;
+		    background-color: #e93030;
+		}
+		.main-wrap {
+			margin-top:  4.4rem;
+			margin-bottom: 18rem;
+		}
+		.main {
+			color: black;
+		    width: 100%;
+		    height: 100%;
+		    -webkit-overflow-scrolling: touch;
+		    overflow-y: scroll;
+		    margin: 0 auto;
+		    background-color: yellow;
+		}
+
+		.footer {
+				height: 8rem;
+			    width: 100%;
+			    z-index:10000000;
+			    position: fixed;
+			    color: #ffffff;
+			    bottom: 0;
+			    left:0;
+			    background-color: blue;
+		}
+
+		.slideout-menu {
+		  position: fixed;
+		  left: 0;
+		  top: 0;
+		  bottom: 0;
+		  right: 0;
+		  z-index: 0;
+		  width: 11.2rem;
+		  overflow-y: auto;
+		  -webkit-overflow-scrolling: touch;
+		  display: none; }
+
+		.slideout-panel {
+		  position: relative;
+		  z-index: 1; }
+
+		.slideout-open,
+		.slideout-open body,
+		.slideout-open .slideout-panel {
+		  overflow: hidden; }
+
+		.slideout-open .slideout-menu {
+		  display: block; }
+
+		  #menu {
+		  	color: black;
+		  }
+	</style>
+</head>
+<body>
+	<div id="panel">
+		<div class="header">
+			
+		</div>
+
+		<div class="main-wrap">
+				<div class="main" id="main" style="color: black;font-size: 12rem;">
+				bbbbbbbbbbb<br>
+				bbbbbbbbb<br>
+				b<br>
+				bbb<br>
+				bb<br>
+<br>
+				b<br>
+				b<br>
+bbbbbbbbbbb<br>
+				bbbbbbbbb<br>
+				b<br>
+				bbb<br>
+				bb<br>
+<br>
+				b<br>
+				b<br>
+				bbbbbbbbbbb<br>
+				bbbbbbbbb<br>
+				b<br>
+				bbb<br>
+				bb<br>
+<br>
+				b<br>
+				b<br>
+				</div>
+		</div>
+		<div class="footer">
+			<form action="">
+				<input type="text">
+			</form>
+		</div>
+	</div>
+	<div id="aaaa">
+		<p>+ 菜单1</p>
+		<p>+ 菜单1</p>
+		<p>+ 菜单1</p>
+		<p>+ 菜单1</p>
+		<p>+ 菜单1</p>
+		<p>+ 菜单1</p>
+ 
+	</div>
+	<script>
+	    var slideout = new Slideout({
+		    'panel': document.getElementById('panel'),
+		    'menu': document.getElementById('aaaa'),
+		    'padding': 256,
+    		'tolerance': 70
+		});
+
+		// var myScroll = new IScroll('#main', {
+		//     mouseWheel: true,
+		//     scrollbars: true
+		// });
+	</script>
+</body>
+</html>

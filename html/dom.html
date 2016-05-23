@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="parent">
+		parent
+		<span id="son1">
+			son1
+			<div id="grandSon">grandSon</div>
+		</span>
+		<div id="son2">
+			son2
+		</div>
+		<p id="target" name="target">target1</p>
+	</div>
+	<script>
+	    // 查找元素
+		var target = document.getElementById('target');
+		var parent = document.getElementsByName('parent');
+		var son1 = document.getElementsByTagName('span')[0];
+
+		// 复制节点
+		var copyTarget = target.cloneNode();
+
+		// 插入元素
+		copyTarget.insertBefore(son1);
+		
+	</script>
+</body>
+</html>

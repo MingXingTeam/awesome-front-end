@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;">
+	<title>Document</title>
+	<link rel="stylesheet" href="../respond.css">
+	<script src="ScrollFix.js"></script>
+	<!-- 
+	ios:
+		出界现象：
+		全局滚动： 滚动到顶部或底部再滚动
+		局部滚动： 滚动到页面底部再向下滚动
+
+		局部滚动解决方案：用ScrollFix
+		if(startTopScroll <= 0)
+			elem.scrollTop = 1;
+
+        if(startTopScroll + elem.offsetHeight >= elem.scrollHeight) 
+             elem.scrollTop = elem.scrollHeight - elem.offsetHeight - 1;
+	
+		固定区域禁止touchmove默认事件
+
+		全局滚动解决方法：暂时没有 改为局部滚动
+    
+    Android尽量用全局滚动：
+
+    	.top{
+			top:0;
+			left:0;
+			height:60px;
+			width:100%;
+			position:fixed;
+    	}
+
+    	.content {
+			padding-top: 60px;
+			padding-bottom: 60px;
+    	}
+
+    	.bottom {
+			bottom: 0;
+			left: 0;
+			height: 60px;
+			width: 	100%;
+			position: fixed;
+    	}
+		
+		尽量不用overflow:auto
+		使用min-height:100% 代替height:100%
+
+		ios下带有滚动条且position:absolute的节点不要设置背景色
+	 -->
+</head>
+<body>
+	Hello 
+	<div id="scrollable">
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>
+		A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>A<br>
+	</div>
+	<script>
+		var scrollable = document.getElementById("scrollable");
+		new ScrollFix(scrollable);
+	</script>
+</body>
+</html>

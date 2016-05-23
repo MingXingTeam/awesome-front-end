@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <!-- 页面编码 -->
+	<meta charset="UTF-8">
+    <!-- 禁止地址和手机号码检测 -->
+    <meta name="format-detection" content="telephone=no, address=no">
+    <!-- 删除默认的苹果工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes"/>
+    
+    <!-- 视口为设备大小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<style>
+		.position-relative {
+			position: relative;
+		}
+		.position-absolute {
+			position: absolute;
+		}
+		.wrap {
+			background-color: blue;
+			height: 200px;
+			width: 200px;
+		}
+
+		.btn {
+			top: 150px;
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap position-relative">
+		<div id="btn" class="btn position-absolute">
+			click me
+		</div>
+	</div>
+	<script>
+		document.getElementById('btn').addEventListener("click", function() {
+			alert(11)
+		}, false)
+	</script>
+</body>
+</html>

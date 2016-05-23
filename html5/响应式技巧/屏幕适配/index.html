@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=400, target-densitydpi=device-dpi"> -->
+	<title>Document</title>
+	<style>
+		html,body {
+			width: 320px;
+		}
+		/* 根据viewport计算 和缩放没关系 */
+		@media screen and (max-width: 320px) {
+			body {
+				border: 2px solid red;
+				background: red;
+			}
+		}
+
+		.game {
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    overflow: hidden;
+	    }
+
+	</style>
+    <script type="text/javascript">
+        var phoneScale = parseInt(window.screen.width) / 320;
+        document.write('<meta name="viewport" content="width=320, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+    </script>
+</head>
+<body>
+<img class="image" src="320x568.jpg" srcset="320x568.jpg 320w, 375x667.jpg 375w" sizes="(max-width: 320px) 200px, 600px">
+	<!-- <img src="../srcset/320x568.jpg" alt=""> -->
+</body>
+</html>

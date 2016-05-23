@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- <meta content="email=no" name="format-detection" /> -->
+	<title>iOS与Android平台上问题列表</title>
+<!-- 	<link rel="stylesheet" href="respond.css"> -->
+
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		h2 {
+			height: 20px;
+			background: lightyellow;
+			color: black;
+			font-weight: 400;
+			border: 1px dashed green;
+			font-size: 18px;
+			padding: 4px;
+			margin: 4px 0 8px 0;
+		}
+		h3 {
+			height: 20px;
+			background: red;
+			color: black;
+			font-weight: 400;
+			border: 1px dotted green;
+			font-size: 18px;
+			padding: 4px;
+			margin: 8px 0 0 0;
+		}
+			
+		/*------------demo1----------*/
+		#demo1 a {
+		  color: #000;
+		}
+		#demo1 a:active {
+		  color: red;
+		}
+		/*----------------------------*/
+
+		/*------------demo2----------*/
+		#demo2 .aa {
+		  transition: width 4s ease;
+		  width: 200px;
+		  height: 200px;
+		  background: blue;
+
+		}
+		#demo2 .aa:hover {
+		  width: 800px;
+		}
+		/*----------------------------*/
+	</style>
+
+</head>
+<body>
+
+	<h2>伪类 :active 失效</h2>
+	
+	<div id="demo1">
+		<a href="####">click me</a>
+	</div>
+	<h3>结果：在chrome上测试没有这个问题</h3>
+	
+	<br>
+	<br>
+
+	<h2> transition 闪屏</h2>
+	<div id="demo2">
+		<div class="aa">
+			
+		</div>
+	</div>
+	<h3>结果：闪屏具体体现在哪？</h3>
+
+	<h2> IE10+ input右边的叉号</h2>
+	<div id="demo3">
+		<input type="text">
+	</div>
+	<h3>结果：没环境</h3>
+	
+	
+
+	<script>
+		
+	</script>
+</body>
+</html>
