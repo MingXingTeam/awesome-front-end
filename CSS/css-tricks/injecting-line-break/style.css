@@ -1,0 +1,18 @@
+h4, .one {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.6;
+  background: #eee;
+  padding: 20px;
+  margin: 5px 0 25px 0; }
+
+h4 span, .one span {
+  color: white;
+  font-weight: 900; }
+
+.one span {
+  background-color: black;
+  padding: 1px 8px;
+  display: table; }
+
+/*# sourceMappingURL=style.css.map */

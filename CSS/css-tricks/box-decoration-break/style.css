@@ -1,0 +1,34 @@
+
+/* styling for Pen, unrelated to box-decoration-break */
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.boxbreak, .columns { color: white; }
+
+.boxbreak {
+  height: auto;
+  width: 300px;
+  padding: 0 1em;
+  margin-bottom: 2em;
+}
+
+span, p {
+  font-size: 1.3em;
+  padding: .1em;
+  border: 5px solid black;
+  background: linear-gradient(to right, blue 0%, purple 50%, pink 100%);
+  box-shadow: 1px 0 6px black;
+  line-height: 2;
+}
+
+.columns {
+  width: 50%;
+  -webkit-columns: 6em auto;
+  -moz-columns: 6em auto;
+  columns: 6em auto;
+  -webkit-column-gap: 2em;
+  -moz-column-gap: 2em;
+  column-gap: 2em;
+}

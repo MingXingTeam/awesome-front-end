@@ -1,0 +1,68 @@
+<html>
+<head>
+
+<script type="text/javascript">
+
+function print_r( title, object ) {
+
+    var output = '';
+    for( var key in object ) {
+
+        output += key + ": " + object[ key ] + "\n";
+
+    }
+
+    output = title + "\n\n" + output;
+
+    alert( output );
+
+}
+
+function Sandwich() {
+
+    // Uncomment this to fix the problem
+    //this.ingredients = [];
+
+}
+
+Sandwich.prototype = {
+
+    "ingredients" : [],
+    "addIngredients" : function( ingArray ) {
+
+        for( var key in ingArray ) {
+
+            this.addIngredient( ingArray[ key ] );
+
+        }
+
+    },
+    "addIngredient" : function( thing ) {
+
+        this.ingredients.push( thing );
+
+    }
+
+}
+
+var cheeseburger = new Sandwich();
+cheeseburger.addIngredients( [ "burger", "cheese" ] );
+
+var blt = new Sandwich();
+blt.addIngredients( [ "bacon", "lettuce", "tomato" ] );
+
+var spicy_chicken_sandwich = new Sandwich();
+spicy_chicken_sandwich.addIngredients( [ "spicy chicken pattie", "lettuce", "tomato", "honey dijon mayo", "love" ] );
+
+var onLoad = function() {
+
+    print_r( "Cheeseburger contains:", cheeseburger.ingredients );
+
+};
+
+</script>
+
+</head>
+<body onload="onLoad();">
+</body>
+</html>

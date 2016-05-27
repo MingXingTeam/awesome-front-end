@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul.toc, 
+		ul.toc ul {
+			counter-reset: toc;
+		}
+		ul li {
+			counter-increment: toc;
+		}
+		.toc li:before {
+			content: "(Item " counters(toc, ".") ")";
+		}
+	</style>
+</head>
+<body>
+	<ul class="toc">
+		<li>Intro</li>
+		<li>Topic
+			<ul>
+				<li>Subtopic</li>
+				<li>Subtopic</li>
+				<li>Subtopic</li>
+			</ul>
+		</li>
+		<li>Topic
+			<ul>
+				<li>Subtopic</li>
+				<li>Subtopic</li>
+				<li>Subtopic</li>
+			</ul>
+		</li>
+		<li>Closing</li>		
+	</ul>
+</body>
+</html>

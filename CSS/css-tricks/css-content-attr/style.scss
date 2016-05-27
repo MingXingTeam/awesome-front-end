@@ -1,0 +1,33 @@
+#test {
+	position: relative;
+	top: 200px;
+
+	width: 100px;
+	height: 100px;
+	
+	background-color: yellow;
+
+	&::before {
+		position: absolute;
+		top: 100px;
+		left: 0;
+	
+		width: 100px;
+		height: 100px;
+		display: block;
+		
+		background-color: blue;
+		
+		content: '';
+	}
+
+	
+}
+
+div[data-line]::after {
+	content: attr(data-line);
+}
+
+div[data-line]:after { 
+	content: attr(data-line)" WORLD"; 
+}

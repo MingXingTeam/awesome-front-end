@@ -1,0 +1,23 @@
+h4 {
+	  //common style
+	  font-weight: 300;
+	  font-size: 24px;
+	  line-height: 1.6;
+	  background: #eee;
+	  padding: 20px;
+	  margin: 5px 0 25px 0; 
+}
+
+h4 span {
+	color: white;
+	font-weight: 900;
+}
+
+.one {
+	@extend h4;
+	span {
+		background-color: black;
+		padding: 1px 8px;
+		display: table;
+	}
+}

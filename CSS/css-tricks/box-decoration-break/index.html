@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="../../../jquery.2.1.3.js"></script>
+</head>
+<body>
+	<button>clone</button>
+	<button>slice</button>
+
+	<h2>Span with Line Breaks</h2>
+	<div class="boxbreak">
+	  <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas architecto est voluptatibus debitis quibusdam incidunt labore veritatis explicabo quo?</span>
+	</div>
+
+	<h2>Paragraph Across Columns</h2>
+	<div class="columns">
+	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas architecto est voluptatibus debitis quibusdam incidunt labore veritatis explicabo quo?</p>
+	</div>
+	<script>
+		$('button').on('click', function() {
+		  $('span, p').css({
+		    '-webkit-box-decoration-break' : $(this).text(),
+		    '-moz-box-decoration-break' : $(this).text(),
+		    'box-decoration-break' : $(this).text()
+		  })
+		});
+	</script>
+</body>
+</html>
