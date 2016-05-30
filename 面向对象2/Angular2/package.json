@@ -1,0 +1,32 @@
+{
+  "name": "component-check",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular2": "^2.0.0-alpha.46",
+    "components-ember": "https://github.com/components/ember/tarball/2.2.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "reflect-metadata": "^0.1.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-syntax-jsx": "^6.8.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "ember-templates-loader": "^1.13.0",
+    "html-webpack-plugin": "^2.17.0",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --inline",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC"
+}
