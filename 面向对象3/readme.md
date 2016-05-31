@@ -1,0 +1,1 @@
+https://github.com/Mercateo/component-check

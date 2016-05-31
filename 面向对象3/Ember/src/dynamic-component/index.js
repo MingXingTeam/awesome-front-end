@@ -7,13 +7,15 @@ export default Ember.Component.extend({
   styles,
   init() {
     this._super(...arguments);
-    this.set('seconds', Math.ceil(Math.random() * 100));
+    this.set('seconds', 0);
     this.count();
   },
   count() {
     Ember.run.later(this, () => {
-      this.set('seconds', this.get('seconds') + 1);
-      this.count();
+      if (!this.isDestroyed) {
+        this.set('seconds', this.get('seconds') + 1);
+        this.count();
+      }
     }, 1000);
   }
 });

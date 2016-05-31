@@ -3,8 +3,12 @@ import styles from './dynamic-component.css';
 
 export default class DynamicComponent {
   constructor() {
-    this.seconds = Math.ceil(Math.random() * 100);
-    setInterval(() => this.seconds++, 1000);
+   this.seconds = 0;
+   this.intervalId = setInterval(() => this.seconds++, 1000);
+  }
+
+  onDestroy() {
+    clearInterval(this.intervalId);
   }
 
   static get annotations() {

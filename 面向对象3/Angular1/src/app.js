@@ -1,15 +1,14 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
-import dynamicComponent from './dynamic-component';
+import composableComponent from './composable-component';
 
 angular.module('example-app', [
   ngRoute,
-  dynamicComponent
+  composableComponent
 ]).config($routeProvider => {
   $routeProvider.when('/', {
     template: `
-		<dynamic-component></dynamic-component>
-        <dynamic-component></dynamic-component>
+      <composable-component></composable-component>
     `
   });
 });
