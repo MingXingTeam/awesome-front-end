@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>  
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!--The viewport meta tag is used to improve the presentation and behavior of the samples 
+    on iOS devices-->
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+  <title></title>
+
+  <style> 
+    body {padding:0;margin: 0; text-align: center;}
+.wrapper {margin:30px;width: 450px;border:1px solid red;}
+.small-box {width: 50px;height: 50px;margin: 10px;background: #9cc;}
+.middle-box {width: 100px;height: 100px;margin: 20px;background: #99c;}
+.big-box {width: 120px;height: 120px;margin: 20px;background: #33e;}
+.floatL {float: left;}
+.floatR {float: right;}
+.clear {clear: both;}
+.posA {position: absolute;}
+.overHid{overflow: hidden;}
+.red {background: #f00;}
+.green {background: #0f0;}
+.blue {background: #00f;}
+  </style> 
+  
+  
+</head> 
+
+<body> 
+  <div class="wrapper overHid">
+    <div class="wrapper overHid">
+    <div class="big-box" style="box-shadow:0 20px 0 rgba(0,0,255,0.2);">non-float</div>
+    <div class="middle-box green floatL" style="opacity:0.6">float left</div>
+    <div class="middle-box red clear" style="margin-top:40px;box-shadow:0 -40px 0 rgba(255,0,0,0.2);">clear</div>
+</div>
+</div>
+</body> 
+
+</html>

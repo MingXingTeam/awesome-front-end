@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="slide.css">
+	<script src="
+https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="slide.js"></script>
+	
+</head>
+<body>
+	<div id="test">
+		loading..
+	</div>
+	<script>
+		$("#test").slide({
+			data: [
+			{
+				imgSrc: './1.jpg'
+			},
+			{
+				imgSrc: './2.jpg'
+			}
+			]
+			// ,
+			// loadingSrc: './load.jpg'
+		})
+	</script>
+</body>
+</html>

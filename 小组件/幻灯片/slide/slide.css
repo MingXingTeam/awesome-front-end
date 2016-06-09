@@ -1,0 +1,66 @@
+html, body {
+    width: 100%;
+}
+html, body, ul, li, a, img {
+    margin: 0;
+    padding: 0;
+}
+#_slide{
+    min-width: 980px;
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+#_slide li {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#_slide li a {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    background-color: transparent; 
+}
+
+#_slide li a > img {
+    clear:    both;
+    margin: 0 auto;
+    display:  block;
+    min-width: 100%;
+    height: 100%;
+}
+
+#_slide_nums {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 11;
+}
+
+#_slide_nums span {
+    text-indent: -999px;
+    font-size: 0;
+    line-height: 0;
+
+    width: 12px;
+    float: left;
+    margin-right: 8px;
+    height: 12px;
+    background: url("./_slideCircle.png") 0 0 no-repeat;
+}
+
+#_slide_nums span.current {
+    background: url("./_slideCircle.png") 0 -12px no-repeat;
+}
