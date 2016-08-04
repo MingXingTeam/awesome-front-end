@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body {
+            background: gainsboro;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .g-main {
+            width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            display: inline-block;
+            width: 100%;
+            text-align: right;
+            padding-right: 12px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid green;
+            font-size: 20px;
+        }
+        label.res {
+            border-bottom: 0;
+        }
+        label.exp {
+            border-top: 0;
+            margin-bottom: 20px;
+        }
+
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            line-height: 100px;
+            text-align: center;
+            color: #fff;
+            border:1px solid green;
+            cursor: pointer;
+            font-size: 38px;
+        }
+        td:active,
+        td:visited,
+        td:hover {
+            color: #fff;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<script src="dist/regular.js"></script>
+<!-- Templates -->
+<script id="calculator" type="text/regular" name="calculator">
+            <h2>{title}</h2>
+            <label class="res j-res">0</label>
+            <label class="exp j-exp"></label>
+            <table>
+                <tr>
+                    <td>AC</td>
+                    <td>CE</td>
+                    <td>÷</td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td on-click={this.numClick()} data-value="7">7</td>
+                    <td on-click={this.numClick()} >8</td>
+                    <td on-click={this.numClick()}>9</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td on-click={this.numClick()}>4</td>
+                    <td on-click={this.numClick()}>5</td>
+                    <td on-click={this.numClick()}>6</td>
+                    <td on-click={this.numClick()}>+</td>
+                </tr>
+                <tr>
+                    <td on-click={this.numClick()}>1</td>
+                    <td on-click={this.numClick()}>2</td>
+                    <td on-click={this.numClick()}>3</td>
+                    <td rowspan="2">=</td>
+                </tr>
+                <tr>
+                    <td colspan="2">0</td>
+                    <td>.</td>
+                </tr>
+            </table>
+        </script>
+
+    <script>
+        var Calculator = Regular.extend({
+            template: '#calculator',
+            init: function () {
+                if(!this.$parent) this.inject(document.body)
+                console.log("init");
+            },
+            numClick: function (e) {
+                console.log('numClick');
+
+            }
+        });
+
+        var cal = new Calculator( {
+            data: {
+                title: "计算器"
+            }
+        } );
+
+
+    </script>
+
+</body>
+</html>
