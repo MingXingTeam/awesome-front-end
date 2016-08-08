@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link rel="stylesheet" href="index.css">
+    <!--<link rel="stylesheet" href="index.css">-->
     <style>
         body {
             background: gainsboro;
@@ -59,40 +59,41 @@
     </style>
 </head>
 <body>
+<div class="g-main"></div>
 <script src="dist/regular.js"></script>
 <!-- Templates -->
 <script id="calculator" type="text/regular" name="calculator">
             <h2>{title}</h2>
-            <label class="res j-res">0</label>
-            <label class="exp j-exp"></label>
+            <label class="res j-res"> {res} </label>
+            <label class="exp j-exp"> {exp} </label>
             <table>
                 <tr>
-                    <td>AC</td>
-                    <td>CE</td>
-                    <td>÷</td>
-                    <td>x</td>
+                    <td on-click={this.clearAll($event)}>AC</td>
+                    <td on-click={this.clearExp($event)}>CE</td>
+                    <td on-click={this.numClick($event)} data-value="÷">÷</td>
+                    <td on-click={this.numClick($event)} data-value="x">x</td>
                 </tr>
                 <tr>
-                    <td on-click={this.numClick()} data-value="7">7</td>
-                    <td on-click={this.numClick()} >8</td>
-                    <td on-click={this.numClick()}>9</td>
-                    <td>-</td>
+                    <td on-click={this.numClick($event)} data-value="7">7</td>
+                    <td on-click={this.numClick($event)} data-value="8">8</td>
+                    <td on-click={this.numClick($event)} data-value="9">9</td>
+                    <td on-click={this.numClick($event)} data-value="-">-</td>
                 </tr>
                 <tr>
-                    <td on-click={this.numClick()}>4</td>
-                    <td on-click={this.numClick()}>5</td>
-                    <td on-click={this.numClick()}>6</td>
-                    <td on-click={this.numClick()}>+</td>
+                    <td on-click={this.numClick($event)} data-value="4">4</td>
+                    <td on-click={this.numClick($event)} data-value="5">5</td>
+                    <td on-click={this.numClick($event)} data-value="6">6</td>
+                    <td on-click={this.numClick($event)} data-value="+">+</td>
                 </tr>
                 <tr>
-                    <td on-click={this.numClick()}>1</td>
-                    <td on-click={this.numClick()}>2</td>
-                    <td on-click={this.numClick()}>3</td>
-                    <td rowspan="2">=</td>
+                    <td on-click={this.numClick($event)} data-value="1">1</td>
+                    <td on-click={this.numClick($event)} data-value="2">2</td>
+                    <td on-click={this.numClick($event)} data-value="3">3</td>
+                    <td rowspan="2" on-click={this.calculate($event)}>=</td>
                 </tr>
                 <tr>
-                    <td colspan="2">0</td>
-                    <td>.</td>
+                    <td colspan="2" on-click={this.numClick($event)} data-value="0">0</td>
+                    <td on-click={this.numClick($event)} data-value=".">.</td>
                 </tr>
             </table>
         </script>
@@ -100,21 +101,53 @@
     <script>
         var Calculator = Regular.extend({
             template: '#calculator',
+            data: {
+                title: "计算器",
+                exp: "",
+                res: "0",
+                presEqual: false
+            },
             init: function () {
-                if(!this.$parent) this.inject(document.body)
+                if(!this.$parent) this.$inject(document.getElementsByClassName('g-main')[0]);
                 console.log("init");
             },
             numClick: function (e) {
                 console.log('numClick');
 
+                if(this.presEqual) {
+                    this.clearExp();
+                    this.presEqual = false;
+                }
+
+                var eTarget = e.target;
+                var n = eTarget.getAttribute("data-value");
+                if(!/[0-9]/.test(parseInt(n)) && this.data.exp.length <= 0) {//一开始输入操作符 啥也不干
+
+                } else if(!/[0-9]/.test(parseInt(n)) && !/[0-9]/.test(this.data.exp[this.data.exp.length-1])) {//自己不是数字并且原表达式最后一个也不是数字
+                    //替换原表达式最后一个
+                    var b = this.data.exp[this.data.exp.length-1];
+                    this.data.exp = this.data.exp.replace(new RegExp('\\'+b+'$'), n);
+                } else {
+                    this.data.exp += n;
+                }
+            },
+            clearAll: function (e) {
+                this.clearExp();
+                this.data.res = "0";
+            },
+            clearExp: function (e) {
+                this.data.exp = '';
+            },
+            calculate: function (e) {
+                this.presEqual = true;
+                var exp = this.data.exp.replace(/x/g, '*').replace(/÷/g, '/');
+                if(/^[0-9].*[0-9]$/.test(exp)) {
+                    this.data.res =  eval(exp);
+                }
             }
         });
 
-        var cal = new Calculator( {
-            data: {
-                title: "计算器"
-            }
-        } );
+        var cal = new Calculator();
 
 
     </script>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--<link rel="stylesheet" href="index.css">-->
+    <style>
+        body {
+            background: #333;
+            color: #fff;
+            font-size: 40px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .g-main {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .m-header {
+            height: 200px;
+            width: 800px;
+            margin: 0 auto;
+            padding: 152px 20px;
+            font-size: 0;
+        }
+        .left, .right {
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .title {
+            font-size: 30px;
+        }
+
+        .panel {
+            margin-top: 20px;
+        }
+        .num {
+            font-size: 50px;
+        }
+
+        .panel span, .panel button{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            outline: none;
+            color:#fff;
+            vertical-align: middle;
+            border: none;
+            background: #333;
+        }
+
+        .panel button {
+            font-size: 25px;
+        }
+
+        .m-clock {
+            width: 600px;
+            height: 600px;
+            border: 2px solid green;
+            border-radius: 50%;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .clock-title {
+            padding-top: 30%;
+            margin-bottom: 10%;
+            font-size: 96px;
+        }
+        .minus, .plus {
+            cursor: pointer;
+        }
+
+        .clock-num {
+            font-size: 96px;
+        }
+
+        .m-water {
+            position: absolute;
+            bottom: 0;
+            width: 600px;
+            height: 0px;
+            background: green;
+            z-index: -1;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="g-main">
+
+</div>
+
+<script src="dist/regular.js"></script>
+
+<!-- Templates -->
+<script id="clock" type="text/regular" name="clock">
+    <div class="m-header">
+        <div class="left">
+            <div class="title">BREAK LENGTH</div>
+            <div class="panel break-panel">
+                <button class="minus" ref='minus1'>-</button>
+                <span class="num">{breakTime}</span>
+                <button class="plus" on-click={this.plus(1, $event)} ref='plus1'>+</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="title">SESSION LENGTH</div>
+            <div class="panel session-panel">
+                <button class="minus" on-click={this.minus(2, $event)} ref='minus2'>-</button>
+                <span class="num">{sessionTime1}</span>
+                <button class="plus" on-click={this.plus(2, $event)} ref='plus2'>+</button>
+            </div>
+        </div>
+    </div>
+    <div class="m-clock" on-click={this.startSession($event)}>
+        <div class="m-water" style="height: {height}+'px'">
+        </div>
+        <div class="title clock-title">SESSION</div>
+        <div class="num clock-num">{sessionTime2}</div>
+    </div>
+</script>
+
+    <script>
+        var dom = Regular.dom;
+        var Clock = Regular.extend({
+            template: '#clock',
+            data: {
+                breakTime: 5,
+                sessionTime1: 25,
+                sessionTime2: 25,
+                originHeight: 600,
+                height: 0,
+                per: 600 / (25 * 60),
+                timer: null
+            },
+            init: function () {
+                if(!this.$parent) this.$inject(document.getElementsByClassName('g-main')[0]);
+                console.log("init");
+                dom.on(this.$refs.minus1, 'click', this.minus);
+            },
+            minus: function (type, e) {
+                if(type === 1) {
+                    this.data.breakTime >= 2 && (this.data.breakTime -= 1);
+                } else {
+                    this.data.sessionTime1 >= 2 && (this.data.sessionTime1 -= 1);
+                    this.data.sessionTime2 >= 2 && (this.data.sessionTime2 -= 1);
+                }
+            },
+            plus: function (type, e) {
+                if(type === 1) {
+                   this.data.breakTime += 1;
+                } else {
+                   this.data.sessionTime1 += 1;
+                   this.data.sessionTime2 += 1;
+                }
+            },
+            startSession: function (e) {
+                dom.off(this.$refs.minus1, 'click', this.minus);
+                dom.off(this.$refs.plus1, 'click', this.plus);
+
+                if(this.data.timer) {
+                    window.clearInterval(this.data.timer);
+                    return;
+                }
+                this.data.height += this.data.per;
+                this.data.sessionTime2 -= 0.01;
+
+                this.data.timer = setInterval(function () {
+                    this.data.sessionTime2  = parseInt(this.data.sessionTime2 * 100 - 1) / 100 ;
+                }.bind(this), 1000);
+
+            }
+        });
+
+        var cal = new Clock();
+
+    </script>
+
+</body>
+</html>
