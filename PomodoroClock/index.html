@@ -114,7 +114,7 @@
         <div class="left">
             <div class="title">BREAK LENGTH</div>
             <div class="panel break-panel">
-                <button class="minus" ref='minus1'>-</button>
+                <button class="minus" on-click={this.minus(1, $event)} ref='minus1'>-</button>
                 <span class="num">{breakTime}</span>
                 <button class="plus" on-click={this.plus(1, $event)} ref='plus1'>+</button>
             </div>
@@ -123,16 +123,17 @@
             <div class="title">SESSION LENGTH</div>
             <div class="panel session-panel">
                 <button class="minus" on-click={this.minus(2, $event)} ref='minus2'>-</button>
-                <span class="num">{sessionTime1}</span>
+                <span class="num">{sessionTimeOne}</span>
                 <button class="plus" on-click={this.plus(2, $event)} ref='plus2'>+</button>
             </div>
         </div>
     </div>
     <div class="m-clock" on-click={this.startSession($event)}>
-        <div class="m-water" style="height: {height}+'px'">
+        <div class="m-water" ref='jWater'>
         </div>
-        <div class="title clock-title">SESSION</div>
-        <div class="num clock-num">{sessionTime2}</div>
+        <div class="title clock-title">{title}</div>
+        <div class="num clock-num">
+        {minutes}{quote}{seconds}</div>
     </div>
 </script>
 
@@ -142,49 +143,90 @@
             template: '#clock',
             data: {
                 breakTime: 5,
-                sessionTime1: 25,
-                sessionTime2: 25,
+                sessionTimeOne: 25,
+                sessionTimeTwo: 25,
+
+                minutes: 25,
+                quote: '',
+                seconds: '',
+
                 originHeight: 600,
                 height: 0,
                 per: 600 / (25 * 60),
-                timer: null
+
+                timer: null,
+                title: 'session',
+                isBreakTime: false
             },
             init: function () {
                 if(!this.$parent) this.$inject(document.getElementsByClassName('g-main')[0]);
                 console.log("init");
-                dom.on(this.$refs.minus1, 'click', this.minus);
             },
             minus: function (type, e) {
                 if(type === 1) {
                     this.data.breakTime >= 2 && (this.data.breakTime -= 1);
                 } else {
-                    this.data.sessionTime1 >= 2 && (this.data.sessionTime1 -= 1);
-                    this.data.sessionTime2 >= 2 && (this.data.sessionTime2 -= 1);
+                    this.data.sessionTimeOne >= 2 && (this.data.sessionTimeOne -= 1);
+                    this.data.minutes >= 2 && (this.data.minutes -= 1);
                 }
             },
             plus: function (type, e) {
                 if(type === 1) {
                    this.data.breakTime += 1;
                 } else {
-                   this.data.sessionTime1 += 1;
-                   this.data.sessionTime2 += 1;
+                   this.data.sessionTimeOne += 1;
+                   this.data.minutes += 1;
+                }
+            },
+            setTime: function () {
+                var _self = this;
+                if(parseInt(_self.data.seconds)) {
+                    _self.data.seconds -= 1;
+                } else {
+                    _self.data.minutes >= 1 && (_self.data.minutes = _self.data.minutes - 1);
+                    _self.data.seconds = 59;
+                    _self.data.quote = ":";
                 }
             },
             startSession: function (e) {
+                //不起作用？
                 dom.off(this.$refs.minus1, 'click', this.minus);
                 dom.off(this.$refs.plus1, 'click', this.plus);
 
                 if(this.data.timer) {
                     window.clearInterval(this.data.timer);
+                    this.data.timer = null;
                     return;
                 }
                 this.data.height += this.data.per;
-                this.data.sessionTime2 -= 0.01;
 
+                this.setTime();
+
+                //当在后台的时候停止计时
                 this.data.timer = setInterval(function () {
-                    this.data.sessionTime2  = parseInt(this.data.sessionTime2 * 100 - 1) / 100 ;
-                }.bind(this), 1000);
+                    this.setTime();
 
+                    //修改样式
+                    this.data.height += this.data.per;
+                    this.$refs.jWater.style.height = this.data.height + "px";
+                    console.log( this.data.height);
+                    //改变了UI 必须update
+                    this.$update();
+
+                    if(this.data.height === this.data.originHeight && !this.data.isBreakTime) {//计时结束并且不是breakTime
+                        this.$refs.jWater.style.background = 'red';
+                        this.data.height = 0;
+                        this.data.sessionTimeTwo = this.data.breakTime;
+                        this.data.title = "break!";
+                        this.data.isBreakTime = true;
+                    }else {
+                        this.$refs.jWater.style.background = 'green';
+                        this.data.height = 0;
+                        this.data.sessionTimeTwo = this.data.sessionTimeOne;
+                        this.data.title = "session";
+                        this.data.isBreakTime = false;
+                    }
+                }.bind(this), 1000);
             }
         });
 
