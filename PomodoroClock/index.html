@@ -189,9 +189,9 @@
                 }
             },
             startSession: function (e) {
-                //不起作用？
-                dom.off(this.$refs.minus1, 'click', this.minus);
-                dom.off(this.$refs.plus1, 'click', this.plus);
+                //没有解绑 通过{#if}或者数据判断是否调用回调
+//              dom.off(this.$refs.minus1, 'click', this.minus);
+//              dom.off(this.$refs.plus1, 'click', this.plus);
 
                 if(this.data.timer) {
                     window.clearInterval(this.data.timer);

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--<link rel="stylesheet" href="index.css">-->
+    <style>
+        body {
+            background: #333;
+            color: #fff;
+            font-size: 40px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .g-main {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .m-header {
+            height: 200px;
+            width: 800px;
+            margin: 0 auto;
+            padding: 152px 20px;
+            font-size: 0;
+        }
+        .left, .right {
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .title {
+            font-size: 30px;
+        }
+
+        .panel {
+            margin-top: 20px;
+        }
+        .num {
+            font-size: 50px;
+        }
+
+        .panel span, .panel button{
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            outline: none;
+            color:#fff;
+            vertical-align: middle;
+            border: none;
+            background: #333;
+        }
+
+        .panel button {
+            font-size: 25px;
+        }
+
+        .m-clock {
+            width: 600px;
+            height: 600px;
+            border: 2px solid green;
+            border-radius: 50%;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .clock-title {
+            padding-top: 30%;
+            margin-bottom: 10%;
+            font-size: 96px;
+        }
+        .minus, .plus {
+            cursor: pointer;
+        }
+
+        .clock-num {
+            font-size: 96px;
+        }
+
+        .m-water {
+            position: absolute;
+            bottom: 0;
+            width: 600px;
+            height: 0px;
+            background: green;
+            z-index: -1;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="g-main">
+    <div id="status" class="hidden"></div>
+    <table id="board">
+        <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+        </tr>
+        <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+        </tr>
+        <td><div></div></td>
+        <td><div></div></td>
+        <td><div></div></td>
+        </tr>
+    </table>
+    <div>
+        <div id="player1-label">
+            Player 1
+        </div>
+        <div id="player2-label">
+            Player 2
+        </div>
+    </div>
+</div>
+
+<script src="dist/regular.js"></script>
+
+<!-- Templates -->
+<script id="game" type="text/regular" name="game">
+    <div id="status" class="hidden"></div>
+    <table id="board">
+        <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+        </tr>
+        <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+        </tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+        </tr>
+    </table>
+    <div>
+        <div id="player1-label">
+            Player 1
+        </div>
+        <div id="player2-label">
+            Player 2
+        </div>
+    </div>
+</script>
+
+    <script>
+        var Game = Regular.extend({
+            template: '#game',
+            data: {
+
+            },
+            init: function () {
+                if(!this.$parent) this.$inject(document.getElementsByClassName('g-main')[0]);
+                console.log("init");
+            }
+        });
+
+        var cal = new Game();
+
+    </script>
+
+</body>
+</html>
